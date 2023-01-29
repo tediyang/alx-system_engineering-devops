@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+# Displays "Best School" 10 times using a while loop.
+# But on the 4th iteration and 8th iteration,
+# displays "bad luck" and "good luck".
+
+i=0
+while (( i<10 ))
+do
+  if (( i==3 ))
+  then
+    echo "bad luck"
+  elif (( i==7 ))
+  then
+    echo "good luck"
+  else
+    echo "Best School"
+  fi
+done
