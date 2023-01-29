@@ -4,5 +4,5 @@
 i=0
 do
   echo "Best School"
-until (( i==10))
+until (( i==10 ))
 done
