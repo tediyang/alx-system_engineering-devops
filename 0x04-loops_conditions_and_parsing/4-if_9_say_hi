@@ -8,4 +8,6 @@ do
   if (( i==8 ))
   do
     echo "Hi"
+    done
+  (( i++ ))
 done
