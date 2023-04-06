@@ -6,7 +6,7 @@ apt-get -y install nginx
 ufw allow 'Nginx HTTP'
 echo "Welcome to Tediyang tech" > /var/www/html/index.nginx-debian.html
 echo "Ceci n'est pas une page" > /usr/share/nginx/html/custom_404.html
-sed -i "/listen 80 default_server/a \\\trewrite ^/redirect_me  permanent;" /etc/nginx/sites-available/default
+sed -i "/listen 80 default_server/a \\\trewrite ^/redirect_me https://www.researchgate.net/publication/362177774_UNDERSTANDING_SUPPORT_VECTOR_MACHINES permanent;" /etc/nginx/sites-available/default
 sed -i "/listen 80 default_server/a \\\terror_page 404 /custom_404.html; location = /custom_404.html {root /usr/share/nginx/html;\n\tinternal;}" /etc/nginx/sites-available/default
 sed -i "/listen 80 default_server/a \\\tadd_header X-Served-By $(hostname);" /etc/nginx/sites-available/default
 service nginx restart
