@@ -39,7 +39,7 @@ defaults
 
 frontend myfrontend
         bind *:80
-        http-request redirect scheme https unless { ssl_fc }
+        redirect scheme https code 301 if !{ ssl_fc }
         default_backend myservers
 
 frontend www-https
@@ -50,6 +50,7 @@ frontend www-https
         default_backend myservers
 
 backend myservers
+        redirect scheme https if !{ ssl_fc }
         balance roundrobin
         server 123554-web-01 52.72.26.101:80 check
         server 123554-web-02 100.25.162.157:80 check
