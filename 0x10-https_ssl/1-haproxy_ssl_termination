@@ -39,7 +39,7 @@ frontend myfrontend
 
 frontend www-https
         bind *:443 ssl crt /etc/haproxy/certs/cert.pem
-        reqadd X-Forwarded-Proto:\ https
+        http-request add-header X-Forwarded-Proto https
         acl letsencrypt-req path_beg /.well-known/acme-challenge/
         use_backend letsencrypt if letsencrypt-req
         default_backend myservers
@@ -50,4 +50,4 @@ backend myservers
         server 123554-web-02 100.25.162.157:80 check
 
 backend letsencrypt
-        server letsencrypt 127.0.0.1:443
+        server letsencrypt 127.0.0.1:54321
