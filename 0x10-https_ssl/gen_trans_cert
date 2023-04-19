@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+# generate and transfer cert to haproxy
+
+domain="www.tediyangcodes.tech"
+haproxy_cert_dir="/etc/haproxy/certs"
+
+sudo mkdir -p $haproxy_cert_dir
+sudo chmod 755 $haproxy_cert_dir
+sudo cat /etc/letsencrypt/live/$domain/fullchain.pem /etc/letsencrypt/live/$domain/privkey.pem > $haproxy_cert_dir/cert_dns.pem
+sleep 1
+
+#remove users and group permission from cert files.
+sudo chmod 700 /etc/letsencrypt/live
