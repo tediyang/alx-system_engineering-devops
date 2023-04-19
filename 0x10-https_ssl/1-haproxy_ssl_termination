@@ -12,6 +12,10 @@ global
         ca-base /etc/ssl/certs
         crt-base /etc/ssl/private
 
+        # Default DH parameter
+        tune.ssl.default-dh-param 2048
+
+
         # See: https://ssl-config.mozilla.org/#server=haproxy&server-version=2.0.3&config=intermediate
         ssl-default-bind-ciphers ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384
         ssl-default-bind-ciphersuites TLS_AES_128_GCM_SHA256:TLS_AES_256_GCM_SHA384:TLS_CHACHA20_POLY1305_SHA256
@@ -35,10 +39,11 @@ defaults
 
 frontend myfrontend
         bind *:80
+        http-request redirect scheme https unless { ssl_fc }
         default_backend myservers
 
 frontend www-https
-        bind *:443 ssl crt /etc/haproxy/certs/cert.pem
+        bind *:443 ssl crt /etc/haproxy/certs/cert_dns.pem
         http-request add-header X-Forwarded-Proto https
         acl letsencrypt-req path_beg /.well-known/acme-challenge/
         use_backend letsencrypt if letsencrypt-req
