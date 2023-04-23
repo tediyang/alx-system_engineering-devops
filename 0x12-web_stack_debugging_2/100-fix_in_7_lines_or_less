@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# change the user of nginx and also nginx listen port 8080
+sudo pkill apache2
+sudo chmod -R 755 /etc/nginx/nginx.conf
+sudo sed -i "s/user www-data/user nginx/g" /etc/nginx/nginx.conf
+sudo sed -i "s/80/8080/g" /etc/nginx/sites-enabled/default
+su nginx -c 'service nginx restart'
