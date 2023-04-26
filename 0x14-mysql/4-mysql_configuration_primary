@@ -39,5 +39,8 @@ symbolic-links=0
 # server id configuration
 server-id       = 1
 
+# binlog do db configuration
+binlog_do_db    = tyrell_corp
+
 # log_bin configuration
 log_bin         = /var/log/mysql/mysql-bin.log
