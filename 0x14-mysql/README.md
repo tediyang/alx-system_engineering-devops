@@ -1,4 +1,4 @@
-# 0x14-mysql
+# 0x14-mysql | SETTING UP MYSQL DATABASE ON SERVERS USING SOURCE-REPLICA REDUNTANT METHOD.
 
 ![mysql](https://www.simplilearn.com/ice9/free_resources_article_thumb/difference_between_sql_and_mysql.jpg)
 
