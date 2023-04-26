@@ -5,6 +5,6 @@ sudo apt-get -y update
 sudo apt-get -y install nginx
 sudo chown -R "$USER:$USER" /var/www
 ufw allow 'Nginx HTTP'
-sudo echo "Hello World!" > /var/www/html/index.nginx-debian.html
+echo "Hello World!" | sudo tee /var/www/html/index.nginx-debian.html > /dev/null
 sudo sed -i '/^\sserver_name.*/a \rewrite ^/redirect_me https://www.researchgate.net/publication/362177774_UNDERSTANDING_SUPPORT_VECTOR_MACHINES permanent;' /etc/nginx/sites-enabled/default
 sudo /etc/init.d/nginx restart
