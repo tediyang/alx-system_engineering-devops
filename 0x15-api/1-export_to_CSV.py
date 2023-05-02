@@ -40,7 +40,7 @@ class TodoList:
 
     def export_to_csv(self):
         """
-        Displays the employee TODO list progress in the specified format.
+        Export the employee todo tasks to CSV file.
         """
         with open("{}.csv".format(self.employee_id), "w") as f:
             for todo in self.tasks:
