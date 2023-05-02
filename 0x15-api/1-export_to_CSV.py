@@ -42,10 +42,10 @@ class TodoList:
         """
         Displays the employee TODO list progress in the specified format.
         """
-        with open("USER_ID.csv", "w") as f:
+        with open("{}.csv".format(self.employee_id), "w") as f:
             for todo in self.tasks:
                 f.write('"{}, {}, {}, {}"\n'.format(
-                    self.id,
+                    self.employee_id,
                     self.name,
                     todo.get("completed"),
                     todo.get("title")))
