@@ -1,14 +1,16 @@
 #!/usr/bin/python3
+
 """
-This module retrieves and export data tpo CSV file.
+This module retrieves and displays a given employee's TODO list progress.
 """
+
 import requests
 import sys
 
 
 class TodoList:
     """
-    This module retrieves and export data tpo CSV file.
+    This class retrieves and displays a given employee's TODO list progress.
     """
 
     def __init__(self, employee_id):
@@ -23,8 +25,7 @@ class TodoList:
         """
         Retrieves the name of the employee with the initialized ID.
         """
-        response = requests.get('https://jsonplaceholder.typicode.com/users/{}'
-                                .format(self.employee_id))
+        response = requests.get('https://jsonplaceholder.typicode.com/users/{}'.format(self.employee_id))
         response_dict = response.json()
         return response_dict['name']
 
@@ -32,20 +33,34 @@ class TodoList:
         """
         Retrieves the tasks of the employee with the initialized ID.
         """
-        response = requests.get(
-            'https://jsonplaceholder.typicode.com/todos?userId={}'.format(
-            self.employee_id))
+        response = requests.get('https://jsonplaceholder.typicode.com/todos?userId={}'.format(self.employee_id))
         response_list = response.json()
         return response_list
 
-    def export_to_csv(self):
+    def display_progress(self):
         """
-        Export to CSV file
+        Displays the employee TODO list progress in the specified format.
         """
-        with open("USER_ID.csv", "w") as f:
-            for todo in self.tasks:
-                f.writelines("{}, {}, {}, {}".format(
-                    self.id, self.name, todo["correction"], todo["title"]))
+        total_tasks = len(self.tasks)
+        done_tasks = sum(1 for task in self.tasks if task['completed'])
+        print('Employee {} is done with tasks({}/{}):'.format(self.name, done_tasks, total_tasks))
+        for task in self.tasks:
+            if task['completed']:
+                print('\t {} {}'.format(task['title'], '(completed)'))
+
+    def export_csv(self):
+        """
+        Exports the employee TODO list progress in CSV format with the file name being the employee ID.
+        """
+        with open('{}.csv'.format(self.employee_id), 'w', newline='') as csvfile:
+            writer = csv.writer(csvfile, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+            writer.writerow(['USER_ID', 'USERNAME', 'TASK_COMPLETED_STATUS', 'TASK_TITLE'])
+            for task in self.tasks:
+                writer.writerow([task['userId'], self.name, task['completed'], task['title']])
+
+        print('CSV file generated: {}.csv'.format(self.employee_id))
+
+
 
 
 if __name__ == '__main__':
@@ -55,4 +70,11 @@ if __name__ == '__main__':
 
     employee_id = sys.argv[1]
     todo_list = TodoList(employee_id)
-    todo_list.export_to_csv()
+    todo_list.display_progress()
+
+
+    # Validate the number of tasks in the CSV file
+    with open('{}.csv'.format(employee_id)) as csvfile:
+        reader = csv.DictReader(csvfile)
+        task_count = sum(1 for row in reader)
+        print('Number of tasks in CSV: {}'.format(task_count))
