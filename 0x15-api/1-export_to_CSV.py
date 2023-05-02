@@ -59,4 +59,3 @@ if __name__ == '__main__':
     employee_id = sys.argv[1]
     todo_list = TodoList(employee_id)
     todo_list.export_to_csv()
-    
