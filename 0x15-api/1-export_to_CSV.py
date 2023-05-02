@@ -34,7 +34,7 @@ class TodoList:
         """
         response = requests.get(
             'https://jsonplaceholder.typicode.com/todos?userId={}'.format(
-            self.employee_id))
+                self.employee_id))
         response_list = response.json()
         return response_list
 
@@ -59,3 +59,4 @@ if __name__ == '__main__':
     employee_id = sys.argv[1]
     todo_list = TodoList(employee_id)
     todo_list.export_to_csv()
+    
