@@ -44,8 +44,11 @@ class TodoList:
         """
         with open("USER_ID.csv", "w") as f:
             for todo in self.tasks:
-                f.write("{}, {}, {}, {}".format(
-                    self.id, self.name, todo["correction"], todo["title"]))
+                f.write('"{}, {}, {}, {}"\n'.format(
+                    self.id,
+                    self.name,
+                    todo.get("completed"),
+                    todo.get("title")))
 
 
 if __name__ == '__main__':
