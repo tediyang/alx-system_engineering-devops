@@ -55,8 +55,7 @@ class TodoList:
         """
         Export the employee todo tasks to json.
         """
-        data = {self.employee_id:
-            [{"task": todo.get("title"),
+        data = {self.employee_id: [{"task": todo.get("title"),
               "completed": todo.get("completed"),
               "username": todo.get("username")} for todo in self.tasks]}
         with open('{}.json'.format(self.employee_id), 'w') as f:
