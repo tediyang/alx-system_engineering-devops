@@ -2,9 +2,9 @@
 """
 This module retrieves and export data tpo CSV file.
 """
+import json
 import requests
 import sys
-import json
 
 
 class TodoList:
@@ -55,12 +55,12 @@ class TodoList:
         """
         Export the employee todo tasks to json.
         """
-        data = {self.employee_id:
-            [{"task": todo.get("title"),
-              "completed": todo.get("completed"),
-              "username": todo.get("username")} for todo in self.tasks]}
-        with open('{}.json'.format(self.employee_id), 'w') as f:
-            json.dump(data, f)
+        data = {{"task": todo.get("title"),
+                 "completed": todo.get("completed"),
+                 "username": todo.get("username")} for todo in self.tasks}
+        user_data = {"{}".format(self.employee_id): list(data)}
+        with open('{}.json'.format(self.employee_id), 'w') as json_file:
+            json.dump(user_data, json_file)
 
 
 if __name__ == '__main__':
