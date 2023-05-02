@@ -26,7 +26,7 @@ class TodoList:
         response = requests.get('https://jsonplaceholder.typicode.com/users/{}'
                                 .format(self.employee_id))
         response_dict = response.json()
-        return response_dict['name']
+        return response_dict['username']
 
     def _get_employee_tasks(self):
         """
