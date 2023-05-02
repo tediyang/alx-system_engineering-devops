@@ -2,9 +2,9 @@
 """
 This module retrieves and export data tpo CSV file.
 """
+import json
 import requests
 import sys
-import json
 
 
 class TodoList:
