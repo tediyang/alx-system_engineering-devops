@@ -44,7 +44,7 @@ class TodoList:
         """
         with open("{}.csv".format(self.employee_id), "w") as f:
             for todo in self.tasks:
-                f.write('"{}, {}, {}, {}"\n'.format(
+                f.write('"{}","{}","{}","{}"\n'.format(
                     self.employee_id,
                     self.name,
                     todo.get("completed"),
