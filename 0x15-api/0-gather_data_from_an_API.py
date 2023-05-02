@@ -1,7 +1,9 @@
 #!/usr/bin/python3
+
 """
 This module retrieves and displays a given employee's TODO list progress.
 """
+
 import requests
 import sys
 
