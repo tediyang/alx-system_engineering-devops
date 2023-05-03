@@ -10,8 +10,7 @@ import sys
 class TodoList:
     """
     This module retrieves and export data tpo CSV file.
-    """
-    """
+    Commented the init function below
     def __init__(self, employee_id=None):
         '''
         Initializes the TodoList object with the given employee ID.
@@ -73,6 +72,15 @@ class TodoList:
 
         users_dict = res_user.json()
         tasks_dict = res_todos.json()
+
+        """
+        Step 1: create an empty dictionary (all_data).
+        Step 2: Loop through the users json file.
+        Step 3: Create a key with id and assign an empty list value
+        into the all_data dict.
+        Step 4: loop through the tasks json file and add to the list a
+        dictionary of key and value pair if the user.id == task.userId
+        """
         all_data = {}
         for user in users_dict:
             id = user.get("id")
