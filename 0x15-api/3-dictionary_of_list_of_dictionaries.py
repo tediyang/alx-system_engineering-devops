@@ -11,14 +11,15 @@ class TodoList:
     """
     This module retrieves and export data tpo CSV file.
     """
-
+    """
     def __init__(self, employee_id=None):
-        """
+        '''
         Initializes the TodoList object with the given employee ID.
-        """
+        '''
         self.employee_id = employee_id
         self.name = self._get_employee_name()
         self.tasks = self._get_employee_tasks()
+    """
 
     def _get_employee_name(self):
         """
@@ -87,5 +88,13 @@ class TodoList:
 
 
 if __name__ == '__main__':
+    """
+    if len(sys.argv) != 2:
+        print('Usage: {} employee_id'.format(sys.argv[0]))
+        sys.exit(1)
+
+
+    employee_id = sys.argv[1]
+    """
     todo_list = TodoList()
     todo_list.export_to_json_all()
