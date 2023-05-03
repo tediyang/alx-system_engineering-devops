@@ -80,7 +80,7 @@ class TodoList:
             for task in tasks_dict:
                 if id == task.get("userId"):
                     all_data[id].append(
-                        {"username": task.get("username"),
+                        {"username": user.get("username"),
                          "task": task.get("title"),
                          "completed": task.get("completed")})
         with open("todo_all_employees.json", "w") as json_file:
