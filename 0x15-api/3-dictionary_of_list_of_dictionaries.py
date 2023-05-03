@@ -76,10 +76,10 @@ class TodoList:
         all_data = {}
         for user in users_dict:
             id = user.get("id")
-            all_data[str(id)] = []
+            all_data[id] = []
             for task in tasks_dict:
-                if str(id) == task.get("userID"):
-                    all_data[str(id)].append(
+                if id == task.get("userId"):
+                    all_data[id].append(
                         {"username": task.get("username"),
                          "task": task.get("title"),
                          "completed": task.get("completed")})
