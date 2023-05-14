@@ -11,7 +11,7 @@ def recurse(subreddit, hot_list=[], after=''):
     """
     li = []
     base = 'https://www.reddit.com'
-    header = {'User-agent': 'n_onyekachukwu'}
+    header = {'User-agent': 'tediyang'}
     respons = req.get('{}/r/{}/hot.json?after={}&limit=200'
                       .format(base, subreddit, after),
                       headers=header, allow_redirects=False)
