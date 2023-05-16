@@ -1,6 +1,6 @@
-<img src=./meme.jpg width=50%>
-
 # IMADECORP LOAD BALANCER OUTAGE INCIDENT REPORT
+
+<img src=./meme.jpg width=50%>
 
 ## Issue Summary
 Request to imadecorp.tech resulted in 500 error response messages from 10:03 AM to 10:17 AM WAT. This also resulted in error messages coming from APIs that needed it services. The acme of this resulted to 100% downtime and traffic requests not served. The root cause of this outage was a configuration involving the installation of the software that prevented the access to a port.
