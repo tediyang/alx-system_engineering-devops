@@ -1,3 +1,5 @@
+<img src=./meme.jpg width=50%>
+
 # IMADECORP LOAD BALANCER OUTAGE INCIDENT REPORT
 
 ## Issue Summary
