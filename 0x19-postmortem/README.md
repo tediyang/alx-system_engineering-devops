@@ -5,8 +5,8 @@ Request to imadecorp.tech resulted in 500 error response messages from 10:03 AM 
 
 ## Timeline (West African Time)
 
-•	10:02 AM: Configuration push was made.
-•	10:03 AM: Outage begins.
+•	10:02 AM: Configuration push was made.\n
+•	10:03 AM: Outage begins.\n
 •	10:03 AM: Pagers alerted teams.
 •	10:03 AM – 10:10 AM: The network engineering team worked on the server.
 •	10:10 AM - 10:14 AM: Successfully installed the software program and stop it service on the load balancer server.
