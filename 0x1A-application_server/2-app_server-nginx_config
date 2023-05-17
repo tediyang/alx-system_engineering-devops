@@ -1,0 +1,102 @@
+user nginx;                                                                                                                                     │setup_mysql_test.sql
+worker_processes auto;                                                                                                                          │tests
+pid /run/nginx.pid;                                                                                                                             │versions
+include /etc/nginx/modules-enabled/*.conf;                                                                                                      │web_flask
+                                                                                                                                                │web_static
+events {                                                                                                                                        │ubuntu@123554-web-01:/data/AirBnB_clone_v2$
+        worker_connections 768;                                                                                                                 │ubuntu@123554-web-01:/data/AirBnB_clone_v2$ gun
+        # multi_accept on;                                                                                                                      │icorn --bind 0.0.0.0:5000 web_flask.0-hello_rou
+}
+
+http {                                                                                                                                          │tests
+                                                                                                                                                │versions
+        server {                                                                                                                                │web_flask
+        # Listen on port 80                                                                                                                     │web_static
+        listen  80 default_server;                                                                                                              │ubuntu@123554-web-01:/data/AirBnB_clone_v2$
+        listen  [::]:80 default_server ipv6only=on;                                                                                             │ubuntu@123554-web-01:/data/AirBnB_clone_v2$ gun
+                                                                                                                                                │icorn --bind 0.0.0.0:5000 web_flask.0-hello_rou
+        # Use IP of server as domain name                                                                                                       │te:app
+        server_name 52.72.26.101;                                                                                                               │[2023-05-17 14:04:26 +0000] [946735] [INFO] Sta
+                                                                                                                                                │rting gunicorn 20.1.0
+        # Customize HTTP response header                                                                                                        │[2023-05-17 14:04:26 +0000] [946735] [INFO] Lis
+        add_header X-Served-By 123554-web-01;                                                                                                   │tening at: http://0.0.0.0:5000 (946735)
+                                                                                                                                                │[2023-05-17 14:04:26 +0000] [946735] [INFO] Usi
+        # Serve /airbnb-onepage/ route from AirBnB_clone_v2                                                                                     │ng worker: sync
+        location = /airbnb-onepage/ {                                                                                                           │[2023-05-17 14:04:26 +0000] [946737] [INFO] Boo
+                proxy_pass http://127.0.0.1:5000/airbnb-onepage/;                                                                               │ting worker with pid: 946737
+                }                                                                                                                               │[2023-05-17 14:59:00 +0000] [946735] [INFO] Han
+        }                                                                                                                                       │dling signal: winch
+                                                                                                                                                │[2023-05-17 14:59:04 +0000] [946735] [INFO] Han
+        ##                                                                                                                                      │dling signal: winch
+        # Basic Settings                                                                                                                        │[2023-05-17 15:16:02 +0000] [946735] [INFO] Han
+        ##                                                                                                                                      │dling signal: winch
+                                                                                                                                                │[2023-05-17 15:16:05 +0000] [946735] [INFO] Han
+        sendfile on;                                                                                                                            │dling signal: winch
+        tcp_nopush on;                                                                                                                          │
+        tcp_nodelay on;                                                                                                                         │
+        keepalive_timeout 65;                                                                                                                   │
+        types_hash_max_size 2048;                                                                                                               │
+        # server_tokens off;                                                                                                                    │
+                                                                                                                                                │
+        # server_names_hash_bucket_size 64;                                                                                                     │
+        # server_name_in_redirect off;                                                                                                          │
+                                                                                                                                                │
+        include /etc/nginx/mime.types;                                                                                                          │
+        default_type application/octet-stream;                                                                                                  │
+                                                                                                                                                │
+        ##                                                                                                                                      │
+        # SSL Settings                                                                                                                          │
+        ##                                                                                                                                      │
+                                                                                                                                                │
+        ssl_protocols TLSv1 TLSv1.1 TLSv1.2 TLSv1.3; # Dropping SSLv3, ref: POODLE        
+        ssl_prefer_server_ciphers on;                                                                                                           │setup_mysql_test.sql
+                                                                                                                                                │tests
+        ##                                                                                                                                      │versions
+        # Logging Settings                                                                                                                      │web_flask
+        ##                                                                                                                                      │web_static
+                                                                                                                                                │ubuntu@123554-web-01:/data/AirBnB_clone_v2$
+        access_log /var/log/nginx/access.log;                                                                                                   │ubuntu@123554-web-01:/data/AirBnB_clone_v2$ gun
+        error_log /var/log/nginx/error.log;                                                                                                     │icorn --bind 0.0.0.0:5000 web_flask.0-hello_rou
+                                                                                                                                                │te:app
+        ##                                                                                                                                      │[2023-05-17 14:04:26 +0000] [946735] [INFO] Sta
+        # Gzip Settings                                                                                                                         │rting gunicorn 20.1.0
+        ##                                                                                                                                      │[2023-05-17 14:04:26 +0000] [946735] [INFO] Lis
+                                                                                                                                                │tening at: http://0.0.0.0:5000 (946735)
+        gzip on;                                                                                                                                │[2023-05-17 14:04:26 +0000] [946735] [INFO] Usi
+                                                                                                                                                │ng worker: sync
+        # gzip_vary on;                                                                                                                         │[2023-05-17 14:04:26 +0000] [946737] [INFO] Boo
+        # gzip_proxied any;                                                                                                                     │ting worker with pid: 946737
+        # gzip_comp_level 6;                                                                                                                    │[2023-05-17 14:59:00 +0000] [946735] [INFO] Han
+        # gzip_buffers 16 8k;                                                                                                                   │dling signal: winch
+        # gzip_http_version 1.1;                                                                                                                │[2023-05-17 14:59:04 +0000] [946735] [INFO] Han
+        # gzip_types text/plain text/css application/json application/javascript text/xml application/xml application/xml+rss text/javascript;  │dling signal: winch
+                                                                                                                                                │[2023-05-17 15:16:02 +0000] [946735] [INFO] Han
+        ##                                                                                                                                      │dling signal: winch
+        # Virtual Host Configs                                                                                                                  │[2023-05-17 15:16:05 +0000] [946735] [INFO] Han
+        ##                                                                                                                                      │dling signal: winch
+                                                                                                                                                │
+        include /etc/nginx/conf.d/*.conf;                                                                                                       │
+        include /etc/nginx/sites-enabled/*;                                                                                                     │
+}                                                                                                                                               │
+                                                                                                                                                │
+                                                                                                                                                │
+#mail {                                                                                                                                         │
+#       # See sample authentication script at:                                                                                                  │
+#       # http://wiki.nginx.org/ImapAuthenticateWithApachePhpScript                                                                             │
+#                                                                                                                                               │
+#       # auth_http localhost/auth.php;                                                                                                         │
+#       # pop3_capabilities "TOP" "USER";                                                                                                       │
+#       # imap_capabilities "IMAP4rev1" "UIDPLUS";                                                                                              │
+#                                                                                                                                               │
+#       server {                                                                                                                                │
+#               listen     localhost:110;                                                                                                       │
+#               protocol   pop3;                                                                                                                │
+#               proxy      on;                                                                                                                  │
+#       }                                                                                                                                       │
+#                                                                                                                                               │
+#       server {                                                                                                                                │
+#               listen     localhost:143;                                                                                                       │
+#               protocol   imap;                                                                                                                │
+#               proxy      on;                                                                                                                  │
+#       }                                                                                                                                       │
+#}   
