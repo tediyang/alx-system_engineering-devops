@@ -27,9 +27,11 @@ http {
                 }
 
         # Serve /number_odd_or_even/<int:n>
-        location = /airbnb-dynamic/number_odd_or_even/([0-9]+)$ {
-                proxy_pass http://0.0.0.0:5001/number_odd_or_even/$1;
-                }
+        # The regex route below, ~ indicates the link is case sensitive and ^
+        # indicates user can specify html doctype.
+	location ~ ^/airbnb-dynamic/number_odd_or_even/([0-9]+)$ {
+		proxy_pass http://0.0.0.0:5001/number_odd_or_even/$1;
+	        }
         }
 
         ##
